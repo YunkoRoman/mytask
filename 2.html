@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ - Дана форма с инпутами, текстареа, чекбоксами, радио кнопочками, селектами и тп.
+Пользователь вводит какие-то данные и закрывает страницу (не факт, что он заполнил всю форму).
+Сделайте так, чтобы при следующем заходе на страницу введенные им ранее данные стояли на своих местах.
+Сделайте ваш скрипт как можно более универсальным.
+ ______________________________________________________________________________________________________
+
+
+<form>
+    <fieldset>
+        <legend>Please select your preferred contact method:</legend>
+        <div>
+            <input type="radio" id="contactChoice1"
+                   name="contact" value="email" >
+            <label for="contactChoice1">Email</label>
+
+            <input type="radio" id="contactChoice2"
+                   name="contact" value="phone">
+            <label for="contactChoice2">Phone</label>
+
+            <input type="radio" id="contactChoice3"
+                   name="contact" value="mail">
+            <label for="contactChoice3">Mail</label>
+        </div>
+        <div>
+            <input type="checkbox" id="check1" name="contact" >
+            <label >Email</label>
+            <input type="checkbox" id="check2"  name="contact">
+            <label >Phone</label>
+            <input type="checkbox" id="check3"  name="contact">
+            <label >Mail</label>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </fieldset>
+</form>
+<script>
+let radio1 = document.querySelector('#contactChoice1');
+let radio2 = document.querySelector('#contactChoice2');
+let radio3 = document.querySelector('#contactChoice3');
+
+let click = JSON.parse(localStorage.getItem("A"));
+if (click != false){
+    radio1.checked = click
+};
+let click2 = JSON.parse(localStorage.getItem("B"));
+if (click2 != false){
+    radio2.checked = click2
+};
+let click3 = JSON.parse(localStorage.getItem("C"));
+if (click3 != false){
+    radio3.checked = click3
+}
+
+
+radio1.oninput = function () {
+    let a = this.checked;
+
+    localStorage.setItem("A",JSON.stringify(a));
+};
+radio2.oninput = function () {
+    let b = this.checked;
+
+    localStorage.setItem("B",JSON.stringify(b));
+};
+radio3.oninput = function () {
+    let c = this.checked;
+
+    localStorage.setItem("C",JSON.stringify(c));
+}
+
+
+</script>
+</body>
+</html>
